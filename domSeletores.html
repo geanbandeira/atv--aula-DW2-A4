@@ -1,0 +1,91 @@
+<style>
+  body {
+    font: normal 12pt Arial;
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+</style>
+
+<h2>Seletores</h2>
+<div id="exemplo">
+  Exemplo <strong>ID</strong>
+</div>
+<div class="classe">Exemplo <strong>Class</strong></div>
+<div name="nome">Exemplo <strong>Name</strong></div>
+<p>
+  <a href="https://tableless.com.br/entendendo-o-dom-document-object-model/">
+    Tableless - DOM</a>
+</p>
+<hr />
+<script>
+
+  window.document.write("Exemplo Dom")
+  document.write('<h3>Boa noite</h3>')
+  document.write(window.document.URL)
+  document.write('<br>')
+
+  var  divID = document.getElementById('exemplo')
+  document.write(divID.innerHTML)
+  document.write('<br>')
+
+  var divClass= document.getElementsByClassName('classe') [0]
+  document.write(divClass.innerText)
+  
+
+  var texto = document.getElementsByTagName('h2') [0]
+  texto.innerHTML = 'Tipo Seletores'
+  texto.style.color = '38516f'
+  document.write('<br>')
+
+  var nome = document.getElementsByName('nome')[0]
+  console.log(nome)
+  
+ 
+  var seletor = document.querySelector('div#exemplo')
+  seletor.style.background = 'pink'
+  document.write('<br>')
+  
+  var seletorALL = document.querySelectorAll('a') [0]
+  document.write(seletorALL.getAttribute('href'))
+  document.write('<br>')
+  document.write(seletorALL.teste)
+
+  //seletorALL.setAttribute('href', 'https://www.ifsp.edu.br/')
+
+  //seletorALL.href = 'https://www.ifsp.edu.br/'
+
+  var divID = document.getElementById('exemplo')
+  console.log(divID.parentElement)
+  console.log(divID.parentNode)
+
+  console.log(divID.childNodes)
+  console.log(divID.children)
+  divID.remove() 
+  document.write('<br>')
+
+  let link = document.createElement('a')
+  link.href = 'https://ifsp.edu.br/'
+  link.textContent = 'IFSP'
+  document.body.append(link)
+
+  /*let hr = document.createElement('hr')
+  let divID = document.getElementById('exemplo')
+  document.body.insertBefore(hr, divID)*/
+ 
+
+
+
+
+/*
+  let link = document.createElement('a')
+  link.href = 'http://www.ifsp.edu.br/'
+  link.textContent = 'IFSP'
+  document.body.append(link)
+
+  let hr = document.createElement('hr')
+  let divID = document.getElementById('exemplo')
+  document.body.insertBefore(hr, divID)
+
+  divID.addEventListener('click', () => document.body.insertBefore(hr, divID))
+*/
+</script>
