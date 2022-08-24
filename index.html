@@ -1,46 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Teste Javascript</title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <h1>Acenda a lâmpada</h1>
-    <img src="imagens/apagada.jpg" id="luz" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 2</title>
+</head>
+<body>
     
-    <script>
-      var quebrada = false
-      document.getElementById('luz').addEventListener('mouseenter', acende)
-      document.getElementById('luz').addEventListener('mouseleave', apaga)
-      document.getElementById('luz').addEventListener('click', quebra)
-      function acende()  {mudalampada(1)}
-      function apaga() {mudalampada(2)}
-      function quebra() {mudalampada(3)}
-
-      function mudalampada(tipo){
-        if (tipo == 1) arquivo = 'imagens/acesa.jpg'
-        else if(tipo ==2) arquivo = 'imagens/apagada.jpg'
-        else if(tipo == 3) arquivo = 'imagens/quebrada.jpg'
-        if(!quebrada) document.getElementById('luz').src =arquivo
-        if(tipo == 3) quebrada =true
-      }
-      /*
-      var quebrada = false 
-      document.getElementById('luz').onmousemove = () =>{
-        if(!quebrada) document.getElementById('luz').src = 'imagens/acesa.jpg'
-      }
-      document.getElementById('luz').onmouseleave = () =>{
-        if(!quebrada) document.getElementById('luz').src = 'imagens/apagada.jpg'
-      }
-      document.getElementById('luz').onclick = () =>{
-        document.getElementById('luz').src = 'imagens/quebrada.jpg'
-        quebrada= false
-      }
-*/
-
+</body>
+<script type="text/javascript">
+    function startTime()
+    {
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+    // add a zero in front of numbers<10
+    m=checkTime(m);
+    s=checkTime(s);
+    document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+    t=setTimeout('startTime()',500);
     
-
+    }
+    
+    function checkTime(i)
+    {
+    if (i<10)
+      {
+      i="0" + i;
+      }
+    return i;
+    }
     </script>
-  </body>
-  <html></html>
+    
+    
+    <div id="txt">
+    <script type="text/javascript">document.write(startTime())</script>
+    </div>
 </html>
