@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    const data = null;
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+	}
+});
+
+xhr.open("GET", "https://football98.p.rapidapi.com/premierleague/fixtures");
+xhr.setRequestHeader("X-RapidAPI-Key", "SIGN-UP-FOR-KEY");
+xhr.setRequestHeader("X-RapidAPI-Host", "football98.p.rapidapi.com");
+
+xhr.send(data);
+</script>
+
+</html>

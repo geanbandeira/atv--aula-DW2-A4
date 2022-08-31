@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API complexo</title>
+</head>
+<body>
+
+    <h1> Fetch API</h1>
+<form>
+    <div> CEP: <input name="cep" value="01001000"/> </div>
+    <div> Estado: <input name="estado" disabled/> </div>
+    <div> Cidade: <input name="cidade" disabled/> </div>
+    <div> Bairro: <input name="bairro" disabled/> </div>
+</form>
+<script>
+    const $campoCEP = document.querySelector('[name="cep"]')
+    const $campoEstado = document.querySelector('[name="estado"]')
+    const $campoCidade = document.querySelector('[name="cidade"]')
+    const $campoBairro = document.querySelector('[name="bairro"]')
+    $campoCEP.addEventListener("blur", infoEvento =>{
+        console.log(infoEvento)
+        const cep = infoEvento.target.value
+
+        $campoEstado.addEventListener("blur", infoEvento =>{
+        console.log(infoEvento)
+        const estado = infoEvento.target.value
+        
+        $campoCidade.value=""
+        $campoBairro.value=""
+        $campoEstado.value=""
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(function(resposta){
+            return resposta.json()
+        })
+        .then(function(dadosCEP){
+            console.log(dadosCEP)
+            $campoCidade.value= dadosCEP.localidade
+        })
+        .then(function(dadosBairro){
+            console.log(dadosBairro)
+            $campoBairro.value= dadosBairro.bairro
+            
+        })
+        .then(function(dadosEstado){
+            console.log(dadosEstado)
+            $campoEstado.value= dadosEstado.estado
+        })
+    })
+
+    
+
+    
+    
+</script>
+</body>
+</html>
